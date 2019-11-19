@@ -56,39 +56,40 @@
 		// You may only change code in the script tag.
 		// You can not change the HTML in the file.
 
-	var vid  = document.querySelector('#myVideo');	
+	var vid  = document.querySelector('#myVideo');
+	var slider = document.querySelector('#volumeSlider');
+
 	function playVid() { 
 		// Play the video and update the volume.
-		console.log("Play Video"); 
 		vid.play();
+		console.log("Play Video"); 
 		
-		document.querySelector('#volume').innerHTML = 
-		document.querySelector('#volumeSlider').value;
+		document.querySelector('#volume').innerHTML = slider.value;
 	} 
 	function pauseVid() { 
 	  	// Pause the video.
-		console.log("Pause Video")
 		vid.pause();
+		console.log("Pause Video")
 	} 
 	function slowSpeed() {
 		// Slow the vido speed by half and log the new rate to the console.
-		console.log("0.5x Speed"); 
-		vid.playbackRate = 0.5;
+		vid.playbackRate = vid.playbackRate * 0.5;
+		console.log(vid.playbackRate);
 
 	} 
 	function increaseSpeed() {
-		// Double the video speen and log the new rate to the console. 
-		console.log("2x Speed"); 
-		vid.playbackRate = 2.0;
+		// Double the video speen and log the new rate to the console.  
+		vid.playbackRate = vid.playbackRate * 2.0;
+		console.log(vid.playbackRate);
 	} 
 	function mute() { 
 		// If the video is currently muted: 
 		// 		log "unmute" to the console
 		// 		unmute the video
 		// 		change the button text to "mute"
-		if (vid.mute = 'True') {
+		if(vid.muted == true){
 			console.log('Unmute');
-			vid.mute = 'False';
+			vid.muted = false;
 			document.getElementById('mute').innerHTML = 'Mute';
 
 		}
@@ -97,9 +98,9 @@
 	 	//		log "mute" to the console
 		// 		mute the video
 		// 		change the button text to "unmute"
-		if (vid.mute = 'False') {
+		else{
 			console.log('Mute');
-			vid.mute = 'True';
+			vid.muted = true;
 			document.getElementById('mute').innerHTML = 'Unmute';
 		}
 
@@ -108,27 +109,35 @@
 		// Change the volume (0 is off, 100 is full volume, everything else is proportionally in between)
 		// Make sure to update the volume element.
 		// Update the console log with the new volume as well.
-		var slider = document.getElementById('volumeSlider')
 		document.querySelector('#volume').innerHTML = slider.value;
-		console.log(slider.value)
+		vid.volume = (slider.value / 100);
+		console.log(vid.volume);
 
 	}
 	       
-	function gray() { 
+	function gray() {
 		console.log("In grayscale")
-		document.getElementById('myVideo').classList.add('scale')
+		vid.classList.add('scale')
+
 		// Utilize the existing grayscale class.
 	}
 	function color() {
 		console.log("In color")
-		document.getElementById('myVideo').classList.remove('scale')
+		vid.classList.remove('scale')
 	}
 	// Not sure if we can test for this??? 
 	function random(){
-		var rand = Math.random()
-		console.log('rand')
-		vid.style.setProperty('grayscale', 'rand')
-		vid.style.setProperty('skewX', 'rand')
+		var rand = Math.floor(Math.random() * 100)
+		var filter = "grayscale(" + rand + "%)"
+		
+		vid.style.setProperty('filter', filter)
+		console.log("Grayscale Filter is " + rand + "%")
+
+		var transform = "skewX(" + rand + "deg)"
+		
+		vid.style.setProperty('transform', transform)
+		console.log("SkewX transform is " + rand + "deg") 
+		// vid.style.setProperty('skewX', 'rand')
 		// Use setProperty to change the grayscale filter and transform properties of the video.
 		// Log what the new values are to the console.
 		
