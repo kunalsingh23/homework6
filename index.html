@@ -127,6 +127,7 @@
 	}
 	// Not sure if we can test for this??? 
 	function random(){
+		
 		var rand = Math.floor(Math.random() * 100)
 		var filter = "grayscale(" + rand + "%)"
 		
@@ -137,7 +138,7 @@
 		
 		vid.style.setProperty('transform', transform)
 		console.log("SkewX transform is " + rand + "deg") 
-		// vid.style.setProperty('skewX', 'rand')
+
 		// Use setProperty to change the grayscale filter and transform properties of the video.
 		// Log what the new values are to the console.
 		
