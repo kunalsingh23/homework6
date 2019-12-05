@@ -74,13 +74,13 @@
 	function slowSpeed() {
 		// Slow the vido speed by half and log the new rate to the console.
 		vid.playbackRate = vid.playbackRate * 0.5;
-		console.log(vid.playbackRate);
+		console.log('playbackrate ' + vid.playbackRate + 'x');
 
 	} 
 	function increaseSpeed() {
 		// Double the video speen and log the new rate to the console.  
 		vid.playbackRate = vid.playbackRate * 2.0;
-		console.log(vid.playbackRate);
+		console.log('playbackrate ' + vid.playbackRate + 'x');
 	} 
 	function mute() { 
 		// If the video is currently muted: 
@@ -111,7 +111,7 @@
 		// Update the console log with the new volume as well.
 		document.querySelector('#volume').innerHTML = slider.value;
 		vid.volume = (slider.value / 100);
-		console.log(vid.volume);
+		console.log('Volume ' + vid.volume * 100);
 
 	}
 	       
